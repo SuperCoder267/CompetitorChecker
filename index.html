@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competitor Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="theme-toggle">
+        <button id="theme-switch">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+    <div id="preloader"></div>
+    <div id="main-content">
+        <h1>Competitor Checker</h1>
+
+        <form id="search-form">
+            <div class="search-type-toggle">
+                <label class="toggle-label">
+                    <span>Search By Coordinates</span>
+                    <input type="checkbox" id="coordsearch">
+                </label>
+                <label class="toggle-label">
+                    <span>Use Imperial Units (miles)</span>
+                    <input type="checkbox" id="unit-toggle">
+                </label>
+            </div>
+
+            <div id="address-input" class="input-section">
+                <input type="text" id="input" placeholder="Enter your address (e.g., 2020 Howell Mill Road, Atlanta, GA, USA)">
+            </div>
+
+            <div id="coordinates-input" class="input-section hidden">
+                <div class="coordinates-fields">
+                    <div class="coord-field">
+                        <label for="lat">Latitude</label>
+                        <input type="text" id="lat" placeholder="34.18370">
+                    </div>
+                    <div class="coord-field">
+                        <label for="long">Longitude</label>
+                        <input type="text" id="long" placeholder="-84.13789">
+                    </div>
+                </div>
+            </div>
+
+            <select id="foodType">
+                <option value="sandwich">Sandwich Shop</option>
+                <option value="seafood">Seafood Restaurant</option>
+                <option value="salad">Salad/Healthy Food</option>
+                <option value="pizza">Pizza Restaurant</option>
+                <option value="icecream">Ice Cream Shop</option>
+                <option value="burger">Burger Restaurant</option>
+                <option value="chicken">Chicken Restaurant</option>
+                <option value="coffee shop">Coffee Shop/Café</option>
+                <option value="donut">Donut Shop</option>
+                <option value="bakery">Bakery</option>
+            </select>
+            <input type="number" id="radius" placeholder="Enter the search radius (km)">
+        </form>
+
+        <div class="btn-div">
+            <button type="submit" id="check-btn">Check</button><br>
+            <button id="clear-btn">Clear</button>
+        </div>
+
+        <h2>Results</h2>
+        <div id="shops-list">Results will go here</div>
+        <div id="results-count"></div>
+    </div> 
+
+    <!-- JavaScript -->
+    <script src="scripts.js" defer></script>
+</body>
+</html>
