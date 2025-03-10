@@ -1,0 +1,500 @@
+:root {
+    /* Light theme variables */
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --background-color: #f5f6fa;
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --border-color: #eee;
+    --input-border: #ddd;
+    --input-background: #ffffff;
+    --border-radius: 6px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+    --accent-color: #f87171;
+    --background-color: #111827;
+    --card-background: #1f2937;
+    --text-color: #f3f4f6;
+    --border-color: #374151;
+    --input-border: #374151;
+    --input-background: #374151;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Hidden styles */
+.hidden {
+    display: none;
+}
+
+/* Base styles */
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#main-content {
+    max-width: 800px;
+    width: 95%;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Typography responsive adjustments */
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 600;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-top: 20px;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+/* Form layout and responsiveness */
+#search-form {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    #search-form {
+        grid-template-columns: 1fr;
+    }
+
+    #lat, #long {
+        width: 100%;
+    }
+}
+
+@media (min-width: 601px) {
+    #search-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #input, #foodType, #radius {
+        grid-column: span 2;
+    }
+}
+
+/* Input styling */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    font-size: clamp(14px, 2vw, 16px);
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+#foodType {
+    background-color: var(--input-background);
+    cursor: pointer;
+}
+
+/* Button container responsiveness */
+.btn-div {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: clamp(10px, 2vw, 12px) clamp(20px, 4vw, 24px);
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    width: auto;
+    min-width: 120px;
+}
+
+#check-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#clear-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+#check-btn:hover {
+    background-color: #2980b9;
+}
+
+#clear-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* Results list responsiveness */
+#shops-list {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+#shops-list li {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+#shops-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Error and loading states */
+.error {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border-left: 4px solid #dc2626;
+    margin: 1rem 0;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+/* Checkbox container responsiveness */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#coordsearch {
+    margin: 0;
+    accent-color: var(--secondary-color);
+}
+
+/* Coordinate inputs styling */
+#lat, #long {
+    width: 120px;
+}
+
+/* Results count styling */
+#results-found {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Small screen optimizations */
+@media (max-width: 480px) {
+    #main-content {
+        margin: 10px auto;
+        padding: 15px;
+        width: 92%;
+    }
+
+    .btn-div {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #shops-list li {
+        padding: 12px;
+    }
+}
+
+/* Medium screen optimizations */
+@media (min-width: 481px) and (max-width: 768px) {
+    #main-content {
+        margin: 15px auto;
+        padding: 20px;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    button:hover {
+        transform: none;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+}
+
+/* High contrast and dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1a1a;
+        --text-color: #ffffff;
+    }
+
+    #main-content {
+        background: #2d2d2d;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+        background-color: #333;
+        color: #fff;
+        border-color: #444;
+    }
+
+    #shops-list li {
+        background: #2d2d2d;
+        border-color: #444;
+    }
+}
+
+/* Theme toggle styling */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-switch {
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    min-width: unset;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+#theme-switch:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+}
+
+.sun-icon,
+.moon-icon {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+[data-theme="dark"] .sun-icon {
+    opacity: 1;
+    transform: rotate(0);
+}
+
+[data-theme="dark"] .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+[data-theme="light"] .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+[data-theme="light"] .moon-icon {
+    opacity: 1;
+    transform: rotate(0);
+}
+
+/* Toggle and smooth transitions */
+.search-type-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-label input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    accent-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.input-section {
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.input-section.hidden {
+    opacity: 0;
+    max-height: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+#address-input input,
+.coordinates-fields {
+    width: 100%;
+    max-width: none;
+}
+
+#input {
+    height: 3rem;
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+#input:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.coordinates-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+.coord-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.coord-field label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.coord-field input {
+    height: 3rem;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+#foodType,
+#radius {
+    height: 3rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+#results-count {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .coordinates-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .search-type-toggle {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .toggle-label {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+.units-toggle {
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.units-toggle input[type="checkbox"] {
+    margin-right: 8px;
+}
